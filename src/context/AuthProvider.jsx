@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
       if (!token) return;
 
       try {
-        const res = await axios.get("http://localhost:3000/api/auth/profile", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/auth/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.data.success) setUser(res.data.user);
